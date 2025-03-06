@@ -6,7 +6,7 @@
 #    By: obouayed <obouayed@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 19:02:22 by obouayed          #+#    #+#              #
-#    Updated: 2025/03/06 19:02:46 by obouayed         ###   ########.fr        #
+#    Updated: 2025/03/06 22:21:51 by obouayed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ INCLUDES = $(INCDIR)/Colors.hpp \
 # Source files
 SRCS = $(SRCDIR)/main.cpp \
 	   $(SRCDIR)/Zombie.cpp \
+	   $(SRCDIR)/newZombie.cpp \
+	   $(SRCDIR)/randomChump.cpp
 
 # Object files
 OBJS = $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
