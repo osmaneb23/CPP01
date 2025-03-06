@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: obouayed <obouayed@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/05 02:53:31 by obouayed          #+#    #+#              #
-#    Updated: 2025/03/05 02:53:32 by obouayed         ###   ########.fr        #
+#    Created: 2025/03/06 19:02:22 by obouayed          #+#    #+#              #
+#    Updated: 2025/03/06 19:02:46 by obouayed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 include colors.mk
 
 # Project name
-NAME = phonebook
+NAME = zombie
 
 # Directories
 SRCDIR = src
@@ -22,13 +22,12 @@ OBJDIR = obj
 INCDIR = includes
 
 # Header files
-INCLUDES = $(INCDIR)/PhoneBook.hpp \
-	$(INCDIR)/Contact.hpp
+INCLUDES = $(INCDIR)/Colors.hpp \
+		   $(INCDIR)/Zombie.hpp
 
 # Source files
-SRCS = $(SRCDIR)/PhoneBook.cpp \
-	$(SRCDIR)/Contact.cpp \
-	$(SRCDIR)/main.cpp
+SRCS = $(SRCDIR)/main.cpp \
+	   $(SRCDIR)/Zombie.cpp \
 
 # Object files
 OBJS = $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
@@ -49,26 +48,24 @@ $(NAME): $(OBJS) $(INCLUDES)
 	echo "$(TEAL)⚙️  Assembling PhoneBook Project...$(RESET)"; \
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME); \
 	end_time=$$(date +%s.%N); \
-	elapsed_secs=$$(echo "$end_time - $start_time" | bc); \
-	total_seconds=$$(echo "$elapsed_secs / 1" | bc); \
-	milliseconds=$$(echo "scale=3; ($elapsed_secs - $total_seconds) * 1000 / 1" | bc | awk '{printf "%.0f", $}'); \
-	minutes=$$(echo "$total_seconds / 60" | bc); \
-	seconds=$$(echo "$total_seconds % 60" | bc); \
-	if [ $minutes -gt 0 ]; then \
-		echo "$(BOLD_GREEN)✅ Compilation successful! $(BOLD_WHITE)[Time: $minutesm $secondss $millisecondsms]$(RESET)"; \
-	elif [ $seconds -gt 0 ]; then \
-		echo "$(BOLD_GREEN)✅ Compilation successful! $(BOLD_WHITE)[Time: $secondss $millisecondsms]$(RESET)"; \
+	elapsed_secs=$$(echo "$$end_time - $$start_time" | bc); \
+	total_seconds=$$(echo "$$elapsed_secs / 1" | bc); \
+	milliseconds=$$(echo "scale=3; ($$elapsed_secs - $$total_seconds) * 1000 / 1" | bc | awk '{printf "%.0f", $$0}'); \
+	minutes=$$(echo "$$total_seconds / 60" | bc); \
+	seconds=$$(echo "$$total_seconds % 60" | bc); \
+	if [ $$minutes -gt 0 ]; then \
+		echo "$(BOLD_GREEN)✅ Compilation successful! $(BOLD_WHITE)[Time: $${minutes}m $${seconds}s $${milliseconds}ms]$(RESET)"; \
+	elif [ $$seconds -gt 0 ]; then \
+		echo "$(BOLD_GREEN)✅ Compilation successful! $(BOLD_WHITE)[Time: $${seconds}s $${milliseconds}ms]$(RESET)"; \
 	else \
-		echo "$(BOLD_GREEN)✅ Compilation successful! $(BOLD_WHITE)[Time: $millisecondsms]$(RESET)"; \
+		echo "$(BOLD_GREEN)✅ Compilation successful! $(BOLD_WHITE)[Time: $${milliseconds}ms]$(RESET)"; \
 	fi
 
-# Compilation rule for object files
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
-	@$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE)+1))));
+	@$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE)+1))))
 	@printf "$(LIGHT_BLUE)🛠️  Compiling [%d/%d] %s...$(RESET)\n" $(CURRENT_FILE) $(TOTAL_FILES) $<
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Create object directory if it doesn't exist
 $(OBJDIR):
 	@echo "$(LIGHT_YELLOW)📂 Creating objects directory...$(RESET)"
 	@mkdir -p $(OBJDIR)
@@ -95,12 +92,12 @@ rerun: re
 	@echo "$(BOLD_CYAN)🔄 Running $(NAME) after rebuild...$(RESET)"
 	@./$(NAME)
 
-# Debug tools
+# Debug tool for memory leaks
 valgrind: $(NAME)
 	@echo "$(BOLD_RED)🔍 Running Valgrind memory check...$(RESET)"
 	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
-# Index
+# Help message
 help:
 	@echo "$(BOLD_CYAN)Available targets:$(RESET)"
 	@echo "  $(GREEN)all$(RESET)      - Build the program"
@@ -112,4 +109,5 @@ help:
 	@echo "  $(GREEN)valgrind$(RESET) - Run with memory leak check"
 	@echo "  $(GREEN)help$(RESET)     - Show this help message"
 
+# Phony (non-file) targets
 .PHONY: all clean fclean re valgrind help run rerun
