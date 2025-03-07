@@ -6,7 +6,7 @@
 #    By: obouayed <obouayed@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 19:02:22 by obouayed          #+#    #+#              #
-#    Updated: 2025/03/06 22:21:51 by obouayed         ###   ########.fr        #
+#    Updated: 2025/03/07 01:58:00 by obouayed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,7 @@ OBJDIR = obj
 INCDIR = includes
 
 # Header files
-INCLUDES = $(INCDIR)/Colors.hpp \
-		   $(INCDIR)/Zombie.hpp
+INCLUDES = $(INCDIR)/Zombie.hpp
 
 # Source files
 SRCS = $(SRCDIR)/main.cpp \

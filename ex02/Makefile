@@ -6,7 +6,7 @@
 #    By: obouayed <obouayed@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 19:02:22 by obouayed          #+#    #+#              #
-#    Updated: 2025/03/07 01:58:09 by obouayed         ###   ########.fr        #
+#    Updated: 2025/03/07 02:00:55 by obouayed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,15 @@
 include colors.mk
 
 # Project name
-NAME = zombieHorde
+NAME = brain
 
 # Directories
 SRCDIR = src
 OBJDIR = obj
 INCDIR = includes
 
-# Header files
-INCLUDES = $(INCDIR)/Zombie.hpp
-
 # Source files
-SRCS = $(SRCDIR)/main.cpp \
-	   $(SRCDIR)/Zombie.cpp \
-	   $(SRCDIR)/zombieHorde.cpp
+SRCS = $(SRCDIR)/main.cpp
 
 # Object files
 OBJS = $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
@@ -43,7 +38,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 # Targets
 all: $(NAME)
 
-$(NAME): $(OBJS) $(INCLUDES)
+$(NAME): $(OBJS)
 	@start_time=$$(date +%s.%N); \
 	echo "$(TEAL)⚙️  Assembling PhoneBook Project...$(RESET)"; \
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME); \
