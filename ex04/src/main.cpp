@@ -6,12 +6,13 @@
 /*   By: obouayed <obouayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:41:29 by obouayed          #+#    #+#             */
-/*   Updated: 2025/03/09 00:01:26 by obouayed         ###   ########.fr       */
+/*   Updated: 2025/03/09 18:13:51 by obouayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
 #include <iostream>
+#include <stdlib.h>
 
 void replaceInFile(const std::string &filename, const std::string &s1, const std::string &s2)
 {
