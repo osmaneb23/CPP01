@@ -6,7 +6,7 @@
 /*   By: obouayed <obouayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 20:00:00 by obouayed          #+#    #+#             */
-/*   Updated: 2025/03/09 18:32:39 by obouayed         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:01:57 by obouayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,10 @@ void Harl::filterComplain(std::string level)
     {
         case DEBUG:
             debug();
-            /* fall through */ // Explicitly indicate fall through
         case INFO:
             info();
-            /* fall through */ // Explicitly indicate fall through
         case WARNING:
             warning();
-            /* fall through */ // Explicitly indicate fall through
         case ERROR:
             error();
             break;
