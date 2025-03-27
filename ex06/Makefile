@@ -6,7 +6,7 @@
 #    By: obouayed <obouayed@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 20:00:00 by obouayed          #+#    #+#              #
-#    Updated: 2025/03/09 18:30:28 by obouayed         ###   ########.fr        #
+#    Updated: 2025/03/27 16:59:38 by obouayed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(INCLUDES)
 	@start_time=$$(date +%s.%N); \
-	echo "$(TEAL)⚙️  Assembling Harl Filter Project...$(RESET)"; \
+	echo "$(TEAL)⚙️  Assembling HarlFilter Project...$(RESET)"; \
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME); \
 	end_time=$$(date +%s.%N); \
 	elapsed_secs=$$(echo "$$end_time - $$start_time" | bc); \

@@ -6,7 +6,7 @@
 #    By: obouayed <obouayed@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 19:02:22 by obouayed          #+#    #+#              #
-#    Updated: 2025/03/07 01:58:00 by obouayed         ###   ########.fr        #
+#    Updated: 2025/03/27 16:56:14 by obouayed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(INCLUDES)
 	@start_time=$$(date +%s.%N); \
-	echo "$(TEAL)⚙️  Assembling PhoneBook Project...$(RESET)"; \
+	echo "$(TEAL)⚙️  Assembling Zombie Project...$(RESET)"; \
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME); \
 	end_time=$$(date +%s.%N); \
 	elapsed_secs=$$(echo "$$end_time - $$start_time" | bc); \
